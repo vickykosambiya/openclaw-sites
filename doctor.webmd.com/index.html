@@ -3,18 +3,640 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DoctorWebMD - Premium Dental Care</title>
+    <title>DoctorWebMD - Advanced Dental Care for a Healthier You</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* CSS Variables for Design System */
+        /* CSS Variables for Theme */
         :root {
-            /* Light Mode Colors */
-            --bg-primary: hsl(0, 0%, 100%);
-            --bg-secondary: hsl(220, 20%, 98%);
-            --text-primary: hsl(220, 20%, 15%);
-            --text-secondary: hsl(220, 10%, 40%);
-            --border-color: hsl(220, 10%, 85%);
-            --accent-color: hsl(240, 80%, 60%); /* Indigo */
-            --accent-light:
+            --primary-gradient: linear-gradient(45deg, #6A11CB 0%, #2575FC 100%); /* Indigo to Blue */
+            --secondary-gradient: linear-gradient(45deg, #FFD700 0%, #FFA500 100%); /* Gold to Orange */
+            --accent-color: #00E676; /* Vibrant Green */
+            --text-color-light: #333333;
+            --text-color-dark: #E0E0E0;
+            --bg-color-light: #F0F2F5;
+            --bg-color-dark: #1A1A2E;
+            --card-bg-light: #FFFFFF;
+            --card-bg-dark: #2C2C4A;
+            --border-color-light: #E0E0E0;
+            --border-color-dark: #444466;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-dark: rgba(0, 0, 0, 0.3);
+            --transition-speed: 0.3s ease-in-out;
+        }
+
+        /* Dark Mode Specific Variables */
+        body.dark-mode {
+            --text-color: var(--text-color-dark);
+            --bg-color: var(--bg-color-dark);
+            --card-bg: var(--card-bg-dark);
+            --border-color: var(--border-color-dark);
+            --shadow: var(--shadow-dark);
+        }
+
+        /* Light Mode Specific Variables (Default) */
+        body:not(.dark-mode) {
+            --text-color: var(--text-color-light);
+            --bg-color: var(--bg-color-light);
+            --card-bg: var(--card-bg-light);
+            --border-color: var(--border-color-light);
+            --shadow: var(--shadow-light);
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-color);
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
+        p { font-size: 1.1rem; }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--card-bg);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent; /* Fallback for browsers that don't support -webkit-text-fill-color */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width var(--transition-speed);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: transform 0.2s ease-in-out, color var(--transition-speed);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: var(--primary-gradient);
+            color: #FFFFFF;
+            text-align: center;
+            padding: 150px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 L 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') repeat;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        #hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        #hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+            font-weight: 800;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--secondary-gradient);
+            color: #FFFFFF;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.4s ease-in-out;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--card-bg);
+            transition: background-color var(--transition-speed);
+        }
+
+        section h2 {
+            margin-bottom: 20px;
+            font-size: 3rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent; /* Fallback */
+        }
+
+        section .section-description {
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* Services Section */
+        #services .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent; /* Fallback */
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* About Us Section */
+        #about .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            text-align: left;
+            margin-top: 50px;
+        }
+
+        #about .about-text,
+        #about .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #about .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        #about .about-image img:hover {
+            transform: scale(1.02);
+        }
+
+        #about .about-text h3 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent; /* Fallback */
+        }
+
+        #about .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Reviews Section */
+        #reviews .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .review-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed);
+            border: 1px solid var(--border-color);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .review-card .stars {
+            color: #FFD700; /* Gold for stars */
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .review-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .review-card .reviewer-info {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        .review-card .reviewer-info span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Lead Capture Form Section */
+        #contact .contact-form-wrapper {
+            background: var(--primary-gradient);
+            padding: 60px;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 50px auto 0 auto;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #contact .contact-form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 L 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>') repeat;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        #contact .contact-form-wrapper h2 {
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        #contact .contact-form-wrapper p {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 0; /* Reset default margin */
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.3); /* Accent color glow */
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group select {
+            appearance: none; /* Remove default arrow */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.6-6.4H18.8c-5%200-9.3%201.8-12.9%205.4-3.6%203.6-5.4%207.9-5.4%2012.9v208.8c0%205%201.8%209.3%205.4%2012.9%203.6%203.6%207.9%205.4%2012.9%205.4h254.6c5%200%209.3-1.8%2012.9-5.4%203.6-3.6%205.4-7.9%205.4-12.9V82.3c0-5-1.8-9.3-5.4-12.9z%22%2F%3E%3C%2Fsvg%3E');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 12px;
+            padding-right: 40px; /* Make space for the arrow */
+        }
+
+        .contact-form .btn-primary {
+            width: 100%;
+            grid-column: 1 / -1;
+            margin-top: 20px;
+            background: var(--secondary-gradient);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: var(--text-color);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mb-4 { margin-bottom: 1.5rem; }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2rem; }
+            #hero p { font-size: 1.2rem; }
+            .btn-primary { padding: 15px 30px; font-size: 1.1rem; }
+            #about .about-content { flex-direction: column; text-align: center; }
+            #about .about-image { order: -1; } /* Image above text on mobile */
+        }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+            .theme-toggle { margin-top: 10px; }
+            #hero { padding: 100px 20px; min-height: 70vh; }
+            #hero h1 { font-size: 2.8rem; }
+            #hero p { font-size: 1.1rem; }
+            section { padding: 60px 0; }
+            section h2 { font-size: 2.2rem; }
+            .service-grid, .reviews-grid { grid-template-columns: 1fr; }
+            .contact-form { grid-template-columns: 1fr; }
+            .contact-form-wrapper { padding: 40px 30px; }
+            .form-group.full-width { grid-column: auto; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            p { font-size: 1rem; }
+            .logo { font-size: 1.5rem; }
+            .nav-links a { font-size: 0.9rem; }
+            .btn-primary { padding: 12px 25px; font-size: 1rem; }
+            .service-card, .review-card { padding: 25px; }
+            .contact-form-wrapper { padding: 30px 20px; }
+        }
+    </style>
+    <!-- Font Awesome for icons (optional, but good for premium feel) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">DoctorWebMD</a>
+            <nav class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#about">About Us</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Your Smile, Our Priority. <br>Advanced Dental Care for a Healthier You.</h1>
+                <p>Experience unparalleled comfort and precision with DoctorWebMD – where cutting-edge technology meets compassionate dentistry. We're dedicated to crafting beautiful, healthy smiles that last a lifetime.</p>
+                <a href="#contact" class="btn-primary">Book Your Appointment Today</a>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>Our Comprehensive Dental Services</h2>
+                <p class="section-description">From routine check-ups to advanced cosmetic procedures, DoctorWebMD offers a full spectrum of dental care designed to meet your unique needs and exceed your expectations.</p>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-tooth"></i></div>
+                        <h3>
