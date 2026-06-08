@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitals Dental Care - Premium & Modern Dentistry</title>
-    <meta name="description" content="Experience premium, modern, and compassionate dental care at Vitals. Your smile, our priority. Book an appointment today!">
+    <title>Vitals Dental - Premium Care for a Radiant Smile</title>
+    <meta name="description" content="Experience unparalleled dental care at Vitals. Modern dentistry, personalized treatments, and a commitment to your radiant smile. Book your appointment today.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦷</text></svg>">
 
     <!-- Tailwind CSS Play CDN -->
@@ -14,8 +14,450 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2563eb', // A nice blue
-                        secondary: '#1d4ed8', // Darker blue
-                        accent: '#34d399', // A light green for accents
-                        dark: '#1f2937', // Dark gray for text
-                        light: '#f9fafb', // Light gray
+                        primary: '#0A2E36', // Dark Teal
+                        secondary: '#E0F2F7', // Light Cyan
+                        accent: '#FFD700', // Gold
+                        textDark: '#333333',
+                        textLight: '#F8F8F8',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        'fade-in-up': {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Custom scrollbar for a premium feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0A2E36;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #071f24;
+        }
+
+        /* Smooth scroll for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom focus styles for accessibility */
+        :focus-visible {
+            outline: 2px solid #FFD700;
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="font-sans text-textDark bg-white">
+
+    <!-- Sticky Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg py-4 px-6 md:px-12 border-b border-gray-100">
+        <nav class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-3xl font-serif font-bold text-primary hover:text-accent transition-colors duration-300" aria-label="Vitals Dental Home">Vitals</a>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#services" class="text-lg font-medium text-textDark hover:text-primary transition-colors duration-300">Services</a></li>
+                <li><a href="#testimonials" class="text-lg font-medium text-textDark hover:text-primary transition-colors duration-300">Testimonials</a></li>
+                <li><a href="#faq" class="text-lg font-medium text-textDark hover:text-primary transition-colors duration-300">FAQ</a></li>
+                <li><a href="#contact" class="text-lg font-medium text-textDark hover:text-primary transition-colors duration-300">Contact</a></li>
+            </ul>
+            <a href="#contact" class="hidden md:block bg-primary text-textLight px-6 py-3 rounded-full font-semibold hover:bg-accent hover:text-primary transition-all duration-300 shadow-md">Book Appointment</a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-primary text-2xl focus:outline-none" aria-label="Open mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-primary bg-opacity-95 z-50 hidden flex-col items-center justify-center space-y-8 text-textLight md:hidden">
+            <button id="close-mobile-menu" class="absolute top-6 right-6 text-4xl text-textLight hover:text-accent focus:outline-none" aria-label="Close mobile menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul class="flex flex-col items-center space-y-6 text-2xl">
+                <li><a href="#services" class="hover:text-accent transition-colors duration-300 mobile-menu-link">Services</a></li>
+                <li><a href="#testimonials" class="hover:text-accent transition-colors duration-300 mobile-menu-link">Testimonials</a></li>
+                <li><a href="#faq" class="hover:text-accent transition-colors duration-300 mobile-menu-link">FAQ</a></li>
+                <li><a href="#contact" class="hover:text-accent transition-colors duration-300 mobile-menu-link">Contact</a></li>
+            </ul>
+            <a href="#contact" class="bg-accent text-primary px-8 py-4 rounded-full font-semibold text-xl hover:bg-white transition-all duration-300 shadow-lg mobile-menu-link">Book Appointment</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-secondary to-white">
+        <div class="container mx-auto grid md:grid-cols-2 gap-8 items-center px-6 md:px-12 py-16 md:py-0">
+            <!-- Left Content -->
+            <div class="flex flex-col justify-center text-center md:text-left animate-fade-in-up">
+                <h1 class="font-serif text-5xl md:text-6xl font-bold text-primary leading-tight mb-6">
+                    Your Journey to a <span class="text-accent">Radiant Smile</span> Starts Here.
+                </h1>
+                <p class="text-lg md:text-xl text-textDark mb-8 max-w-xl mx-auto md:mx-0">
+                    At Vitals, we blend advanced dentistry with compassionate care to deliver exceptional results and a comfortable experience.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#contact" class="bg-primary text-textLight px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent hover:text-primary transition-all duration-300 shadow-lg transform hover:scale-105">
+                        Book Your Appointment
+                    </a>
+                    <a href="#services" class="border border-primary text-primary px-8 py-4 rounded-full font-semibold text-lg hover:bg-primary hover:text-textLight transition-all duration-300 shadow-lg transform hover:scale-105">
+                        Explore Our Services
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Image -->
+            <div class="relative h-full w-full hidden md:flex items-center justify-center animate-fade-in-up delay-200">
+                <img 
+                    src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&auto=format&fit=crop" 
+                    alt="Smiling woman with perfect teeth" 
+                    class="object-cover w-full h-full rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-lg"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-primary mb-4 animate-fade-in-up">Our Premium Dental Services</h2>
+            <p class="text-lg text-textDark max-w-3xl mx-auto mb-12 animate-fade-in-up delay-100">
+                From routine check-ups to advanced cosmetic procedures, Vitals offers a comprehensive range of services tailored to your unique needs.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Service Card 1 -->
+                <div class="bg-secondary p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 animate-fade-in-up delay-200">
+                    <div class="text-primary text-5xl mb-6"><i class="fas fa-tooth"></i></div>
+                    <h3 class="font-serif text-2xl font-semibold text-primary mb-4">General Dentistry</h3>
+                    <p class="text-textDark leading-relaxed">
+                        Comprehensive check-ups, cleanings, fillings, and preventative care to maintain your oral health.
+                    </p>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-secondary p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 animate-fade-in-up delay-300">
+                    <div class="text-primary text-5xl mb-6"><i class="fas fa-star"></i></div>
+                    <h3 class="font-serif text-2xl font-semibold text-primary mb-4">Cosmetic Dentistry</h3>
+                    <p class="text-textDark leading-relaxed">
+                        Teeth whitening, veneers, bonding, and smile makeovers to enhance the aesthetics of your smile.
+                    </p>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="bg-secondary p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 animate-fade-in-up delay-400">
+                    <div class="text-primary text-5xl mb-6"><i class="fas fa-implant"></i></div>
+                    <h3 class="font-serif text-2xl font-semibold text-primary mb-4">Dental Implants</h3>
+                    <p class="text-textDark leading-relaxed">
+                        Permanent solutions for missing teeth, restoring function and natural appearance with precision.
+                    </p>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="bg-secondary p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 animate-fade-in-up delay-500">
+                    <div class="text-primary text-5xl mb-6"><i class="fas fa-braces"></i></div>
+                    <h3 class="font-serif text-2xl font-semibold text-primary mb-4">Orthodontics</h3>
+                    <p class="text-textDark leading-relaxed">
+                        Align your smile with modern orthodontic treatments, including clear aligners and traditional braces.
+                    </p>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="bg-secondary p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 animate-fade-in-up delay-600">
+                    <div class="text-primary text-5xl mb-6"><i class="fas fa-syringe"></i></div>
+                    <h3 class="font-serif text-2xl font-semibold text-primary mb-4">Sedation Dentistry</h3>
+                    <p class="text-textDark leading-relaxed">
+                        Relax and feel comfortable during your treatment with our safe and effective sedation options.
+                    </p>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="bg-secondary p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 animate-fade-in-up delay-700">
+                    <div class="text-primary text-5xl mb-6"><i class="fas fa-x-ray"></i></div>
+                    <h3 class="font-serif text-2xl font-semibold text-primary mb-4">Advanced Diagnostics</h3>
+                    <p class="text-textDark leading-relaxed">
+                        Utilizing cutting-edge technology for accurate diagnoses and personalized treatment plans.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-primary text-textLight">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">What Our Patients Say</h2>
+            <p class="text-lg max-w-3xl mx-auto mb-12 animate-fade-in-up delay-100">
+                Hear directly from those who have experienced the Vitals difference. Your satisfaction is our greatest reward.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Testimonial Card 1 -->
+                <div class="bg-white text-textDark p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 animate-fade-in-up delay-200">
+                    <img 
+                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" 
+                        alt="Avatar of Sarah M." 
+                        class="w-20 h-20 rounded-full mx-auto mb-6 object-cover border-4 border-accent"
+                    >
+                    <p class="text-lg italic mb-6">
+                        "Vitals Dental transformed my smile! The team is incredibly professional, and the results exceeded my expectations. Highly recommend!"
+                    </p>
+                    <p class="font-semibold text-primary">- Sarah M.</p>
+                    <div class="text-accent mt-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial Card 2 -->
+                <div class="bg-white text-textDark p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 animate-fade-in-up delay-300">
+                    <img 
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                        alt="Avatar of David L." 
+                        class="w-20 h-20 rounded-full mx-auto mb-6 object-cover border-4 border-accent"
+                    >
+                    <p class="text-lg italic mb-6">
+                        "I used to dread dental visits, but Vitals changed that. The staff is so kind and made me feel completely at ease. A truly premium experience."
+                    </p>
+                    <p class="font-semibold text-primary">- David L.</p>
+                    <div class="text-accent mt-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial Card 3 -->
+                <div class="bg-white text-textDark p-8 rounded-xl shadow-lg transform hover:scale-105 transition-transform duration-300 animate-fade-in-up delay-400">
+                    <img 
+                        src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop" 
+                        alt="Avatar of Emily R." 
+                        class="w-20 h-20 rounded-full mx-auto mb-6 object-cover border-4 border-accent"
+                    >
+                    <p class="text-lg italic mb-6">
+                        "The attention to detail and personalized care at Vitals is unmatched. My teeth have never looked or felt better. Thank you, Vitals!"
+                    </p>
+                    <p class="font-semibold text-primary">- Emily R.</p>
+                    <div class="text-accent mt-2">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-primary mb-4 animate-fade-in-up">Frequently Asked Questions</h2>
+            <p class="text-lg text-textDark max-w-3xl mx-auto mb-12 animate-fade-in-up delay-100">
+                Find answers to common questions about our services, appointments, and dental care.
+            </p>
+
+            <div class="max-w-4xl mx-auto space-y-6 text-left">
+                <!-- FAQ Item 1 -->
+                <details class="bg-secondary p-6 rounded-xl shadow-md cursor-pointer group animate-fade-in-up delay-200">
+                    <summary class="flex justify-between items-center font-semibold text-xl text-primary focus:outline-none">
+                        What insurance plans do you accept?
+                        <span class="text-primary group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-textDark leading-relaxed border-t border-gray-300 pt-4">
+                        We accept most major dental insurance plans. Please contact our office with your insurance details, and our friendly staff will be happy to verify your coverage.
+                    </p>
+                </details>
+
+                <!-- FAQ Item 2 -->
+                <details class="bg-secondary p-6 rounded-xl shadow-md cursor-pointer group animate-fade-in-up delay-300">
+                    <summary class="flex justify-between items-center font-semibold text-xl text-primary focus:outline-none">
+                        How often should I visit the dentist?
+                        <span class="text-primary group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-textDark leading-relaxed border-t border-gray-300 pt-4">
+                        For optimal oral health, we recommend visiting Vitals Dental for a check-up and cleaning every six months, or as advised by your dentist.
+                    </p>
+                </details>
+
+                <!-- FAQ Item 3 -->
+                <details class="bg-secondary p-6 rounded-xl shadow-md cursor-pointer group animate-fade-in-up delay-400">
+                    <summary class="flex justify-between items-center font-semibold text-xl text-primary focus:outline-none">
+                        What should I do in a dental emergency?
+                        <span class="text-primary group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-textDark leading-relaxed border-t border-gray-300 pt-4">
+                        If you experience a dental emergency, please call our office immediately. We prioritize emergency cases and will do our best to see you as soon as possible.
+                    </p>
+                </details>
+
+                <!-- FAQ Item 4 -->
+                <details class="bg-secondary p-6 rounded-xl shadow-md cursor-pointer group animate-fade-in-up delay-500">
+                    <summary class="flex justify-between items-center font-semibold text-xl text-primary focus:outline-none">
+                        Do you offer payment plans?
+                        <span class="text-primary group-open:rotate-180 transition-transform duration-300"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-textDark leading-relaxed border-t border-gray-300 pt-4">
+                        Yes, we understand that dental treatments can be a significant investment. We offer various flexible payment options and financing plans to make quality dental care accessible. Please discuss with our front desk.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-primary to-primary/90 text-textLight">
+        <div class="container mx-auto px-6 md:px-12 text-center">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Schedule Your Visit</h2>
+            <p class="text-lg max-w-3xl mx-auto mb-12 animate-fade-in-up delay-100">
+                Ready for a healthier, brighter smile? Contact Vitals Dental today to book your appointment or ask any questions.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Contact Form -->
+                <div class="bg-white p-8 md:p-10 rounded-xl shadow-2xl text-textDark animate-fade-in-up delay-200">
+                    <h3 class="font-serif text-3xl font-bold text-primary mb-6">Send Us a Message</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-lg font-medium text-textDark mb-2 text-left">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" 
+                                class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-lg font-medium text-textDark mb-2 text-left">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="your@example.com" 
+                                class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300" required>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-lg font-medium text-textDark mb-2 text-left">Phone Number (Optional)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" 
+                                class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-lg font-medium text-textDark mb-2 text-left">Your Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your dental needs or questions..." 
+                                class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-textLight px-8 py-4 rounded-full font-semibold text-lg hover:bg-accent hover:text-primary transition-all duration-300 shadow-lg transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info & Image -->
+                <div class="flex flex-col justify-center text-left animate-fade-in-up delay-300">
+                    <h3 class="font-serif text-3xl font-bold text-accent mb-6">Visit Our Clinic</h3>
+                    <p class="text-xl mb-4 flex items-center">
+                        <i class="fas fa-map-marker-alt text-accent mr-4 text-2xl"></i>
+                        123 Dental Avenue, Suite 100, Cityville, ST 12345
+                    </p>
+                    <p class="text-xl mb-4 flex items-center">
+                        <i class="fas fa-phone-alt text-accent mr-4 text-2xl"></i>
+                        <a href="tel:+15551234567" class="hover:underline">(555) 123-4567</a>
+                    </p>
+                    <p class="text-xl mb-6 flex items-center">
+                        <i class="fas fa-envelope text-accent mr-4 text-2xl"></i>
+                        <a href="mailto:info@vitalsdental.com" class="hover:underline">info@vitalsdental.com</a>
+                    </p>
+                    
+                    <div class="relative w-full h-64 rounded-xl overflow-hidden shadow-2xl">
+                        <img 
+                            src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?q=80&w=800&auto=format&fit=crop" 
+                            alt="Modern dental clinic interior" 
+                            class="object-cover w-full h-full transform hover:scale-110 transition-transform duration-500"
+                        >
+                        <div class="absolute inset-0 bg-primary/30"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-textLight py-10 px-6 md:px-12 border-t border-primary/80">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-6 md:mb-0">
+                <a href="#" class="text-3xl font-serif font-bold text-accent hover:text-white transition-colors duration-300" aria-label="Vitals Dental Home">Vitals</a>
+                <p class="mt-2 text-sm">&copy; 2023 Vitals Dental. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-6 text-2xl">
+                <a href="#" class="hover:text-accent transition-colors duration-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-accent transition-colors duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-accent transition-colors duration-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-accent transition-colors duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        });
+
+        closeMobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        });
+
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = 'auto'; // Restore scrolling after clicking a link
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const animateElements = document.querySelectorAll('.animate-fade-in-up');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-20');
+                    entry.target.style.animationPlayState = 'running';
+                } else {
+                    // Optional: reset animation when out of view
+                    // entry.target.classList.remove('opacity-100', 'translate-y-0');
+                    // entry.target.classList.add('opacity-0', 'translate-y-20');
+                    // entry.target.style.animationPlayState = 'paused';
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger when 10% of the element is visible
+            rootMargin: '0px 0px -50px 0px' // Adjust when element is 50px from bottom of viewport
+        });
+
+        animateElements.forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-20'); // Initial state for animation
+            el.style.animationFillMode = 'forwards'; // Keep the end state of the animation
+            el.style.animationPlayState = 'paused'; // Pause until visible
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
